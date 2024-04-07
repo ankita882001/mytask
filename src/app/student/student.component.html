@@ -1,0 +1,59 @@
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="text"><strong>First Name</strong></label>
+                <input type="text" #fname class="form-control" placeholder="Enter your First Name">
+            </div>
+
+            <div class="form-group">
+                <label for="text"><strong>Last Name</strong></label>
+                <input type="text" #lname class="form-control" placeholder="Enter your Second Name">
+            </div>
+
+            <div class="form-group">
+                <label for="text"><strong>Email</strong></label>
+                <input type="text" #email class="form-control" placeholder="Enter your Email">
+            </div>
+
+            <div class="form-group">
+                <label for="text"><strong>ContactNumber</strong></label>
+                <input type="text" #contact class="form-control" placeholder="Enter your contact number">
+            </div>
+
+        </div>
+    </div>
+
+    <button  class="btn btn-success" (click)="OnAdd(fname,lname,email,contact)">
+        Add Student Info
+    </button>
+</div>
+<div class="col-md-6">
+    <table class="table table-bordered mt-4" *ngIf="stdArr.length>0 else nodata">
+        <thead>
+            <tr>
+                <th>Sr.No</th>
+                <th>FirstName</th>
+                <th>SecondName</th>
+                <th>Email</th>
+                <th>ContactNumber</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let stds of stdArr ; index as i">
+<tr>
+    <td>{{i+1}}</td>
+    <td>{{stds.fname}}</td>
+    <td>{{stds.lname}}</td>
+    <td>{{stds.email}}</td>
+    <td>{{stds.contact}}</td>
+</tr>
+        </tbody>
+        
+    </table>
+    <ng-template #nodata>
+        <p class="alert alert-warning">
+            No Information added yet !!
+        </p>
+    </ng-template>
+</div>
